@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" ng-app="hyApp">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Test</title>
+  <link rel="stylesheet" href="styles/normalize.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+  <script src="js/main.min.js"></script>
+</head>
+<body>
+
+  <div class="container">
+
+    <header>
+      <h1>HackerYou Instructors!</h1>
+    </header>
+
+    <!-- Instantiate the hyAppCtrl -->
+    <section ng-controller="hyAppCtrl">
+      <div class="search"><input type="text" ng-model="search" placeholder="Search"></div>
+      <ul>
+        <!-- Iterate over all objects in scope.instructors using ng-repeat -->
+        <li ng-repeat="instructor in instructors | filter:search | orderBy:'name'">
+
+        <!-- Call each object in array by referencing object name -->
+        <h2>{{instructor.name}}</h2>
+        <p><a href="http://twitter.com/{{instructor.twitter}}">{{instructor.twitter}}</a></p>
+        <p><a href="{{instructor.website}}">{{instructor.website}}</a></p>
+        </li>
+      </ul>
+    </section>
+
+  </div>
+
+</body>
+</html>
